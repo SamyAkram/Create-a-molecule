@@ -4,24 +4,31 @@ public class Molecule {
 	
 	private LinkedList<Atom> listAtomsComputer;
 	private LinkedList<Atom> listAtomsUser;
+	private String name;
 	
 	public Molecule (String aName){
-		if (aName.equals("Water")) {
+		if (aName.equals("water")) { //Only accepts lowercase letters
 			listAtomsComputer.add(new Atom("H"));
 			listAtomsComputer.add(new Atom("H"));
 			listAtomsComputer.add(new Atom("O"));
+			name = aName;
+		} else if (aName.equals("carbon dioxyde")) { 
+			listAtomsComputer.add(new Atom("C"));
+			listAtomsComputer.add(new Atom("O"));
+			listAtomsComputer.add(new Atom("O"));
+			name = aName;
 		}
 	}
 	
-	public void create() {
+	public void userCreation(){
 		
 	}
 	
-	public boolean check() {
+	public boolean check(){
 		
 	}
 
-	public String toString() {
+	public String toString(){
 		
 	}
 }
