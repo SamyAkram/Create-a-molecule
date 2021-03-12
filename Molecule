@@ -1,1 +1,14 @@
+import java.util.LinkedList;
+
+public class Molecule {
+	
+	private LinkedList<Atom> listAtomsComputer;
+	private LinkedList<Atom> listAtomsUser;
+	
+	
+
+	
+	
+	
+}
 
