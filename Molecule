@@ -21,7 +21,11 @@ public class Molecule {
 	
 
 	public boolean check(LinkedList<Atom> listAtomsUser){
-		
+		if () {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public String toString(){
