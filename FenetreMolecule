@@ -4,3 +4,7 @@ public FenetreMolecule (){
     this.setSize(800,800);
     this.setLocation(300,200);
     this.setDefaultCloseOperation(
+    
+    JLabel build = new JLabel();
+    build.setText("Build A Molecule!");
+    add(build);
