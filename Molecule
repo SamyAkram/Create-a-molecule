@@ -6,7 +6,7 @@ public class Molecule {
 	private LinkedList<Atom> listAtomsUser;
 	private String name;
 	
-	public Molecule (String aName){
+	public Molecule (String aName){ //To be completed with more complex molecules !
 		if (aName.equals("water")) { //Only accepts lowercase letters
 			listAtomsComputer.add(new Atom("H"));
 			listAtomsComputer.add(new Atom("H"));
