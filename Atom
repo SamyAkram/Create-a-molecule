@@ -1,1 +1,12 @@
+public class Atom{
+
+  public String name;
+  
+  public Atom(String aName){
+    
+  }
+  
+  public String toString(){
+    System.out.println("This is...");
+  }
 
