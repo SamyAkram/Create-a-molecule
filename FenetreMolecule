@@ -34,6 +34,25 @@ public FenetreMolecule (){
     atoms.setForeground(Color.red);
     atomContainer.add(atoms);
     
+    //definition of the atom buttons 
+    JButton carbon = new JButton("C");
+    carbon.setBounds(429,371,57,57);
+    
+    JButton oxygen = new JButton("O");
+    oxygen.setBounds(548,371,57,57);
+    
+    JButton hydrogen = new JButton("H");
+    hydrogen.setBounds(667,371,57,57);
+    
+    JButton nitrogen = new JButton("N");
+    nitrogen.setBounds(786,371,57,57);
+    
+    //adding the atoms buttons in their dedicated container
+    atomContainer.add(carbon);
+    atomContainer.add(oxygen);
+    atomContainer.add(hydrogen);
+    atomContainer.add(nitrogen);
+    
     
     
 
