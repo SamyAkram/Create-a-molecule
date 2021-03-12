@@ -20,8 +20,9 @@ public class Molecule {
 	}
 	
 
-	public boolean check(LinkedList<Atom> listAtomsUser){
-		if () {
+	public boolean check(LinkedList<Atom> listAtomsUser){ //To finish !
+		for (Atom a1 : listAtomsComputer)
+		if (listAtomsUser.contains(a1)) {
 			return true;
 		} else {
 			return false;
