@@ -5,50 +5,34 @@ import java.awt.Font;
 
 
 public class FenetreMolecule extends JFrame implements ActionListener {
-    private JLabel build;
-    private JComboBox molecule;
-    private JLabel atoms;
-    private JButton C;
-    private JButton O;
-    private JButton H;
-    private JButton N;
-    private JButton hint;
-    private JButton submit;
-    private JButton trash;
-    private JButton refresh;
-    private JButton startOver;
-    private JLabel points;
-
 public FenetreMolecule (){
     this.setTitle("the molecule you are building:");
-    this.setSize(800,800);               
-    this.setLocation(300,200);             //set frame on middle of the screen
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    //closes window when cross button is clicked    
-    
-    //general pannel
-    JPanel panel=new JPanel();
-    panel.setBounds(0,0,800,800);
-    panel.setLayout(null);
-    panel.setBackground(Color.blue);
-    
-    //pannel where all the choice buttons are
-    JPanel choicePanel=new JPanel();
-    choicePanel.setBounds(500,20,780,780);
-    choicePanel.setLayout(null);
-    choicePanel.setBackground();
+    this.setSize(800,800);
+    this.setLocation(300,200);
+    this.setDefaultCloseOperation(
     
     //title of the window
     JLabel build = new JLabel();
     Font police = new Font("Arial",Font.BOLD,20);
     build.setFont(police);
     build.setText("Build A Molecule!");
-    build.setBounds(10,10,700,100);
+    build.setBounds(10,10,700,114);
     build.setForeground(Color.magenta);
     add(build);
     
+    //panel that gathers the atoms feature
+    JPanel atomContainer = new JPanel();
+    atomContainer.setLayout(null);
+    atomContainer.setBounds(400,286,400,143);
+    add(atomContainer); 
+    
     JLabel atoms = new JLabel();
     Font police2 = new Font("Serif",Font.BOLD,15);
-    atoms.setFont(police2)
+    atoms.setFont(police2); 
+    atoms.setText("Atoms");
+    atoms.setBounds(430,314,230,114);
+    atoms.setForeground(Color.red);
+    atomContainer.add(atoms);
     
     
     
