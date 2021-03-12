@@ -1,1 +1,6 @@
 public class FenetreMolecule extends JFrame implements ActionListener {
+public FenetreMolecule (){
+    this.setTitle("the molecule you are building:");
+    this.setSize(800,800);
+    this.setLocation(300,200);
+    this.setDefaultCloseOperation(
