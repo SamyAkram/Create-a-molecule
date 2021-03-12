@@ -1,1 +1,41 @@
+public class Atom {
 
+  //Attributes
+  private String symbol;
+  private String name;
+  
+  //Constructor
+  public Atom(String aSymbol){
+	  symbol = aSymbol;
+    if (aSymbol.equals("C")){
+      name = "carbon"; //An atom of carbon is created
+    } else if (aSymbol.equals("H")){
+      name = "hydrogen"; //An atom of hydrogen is created
+    } else if (aSymbol.equals("O")){
+      name = "oxygen"; //An atom of oxygen is created
+    } else if (aSymbol.equals("N")){
+      name = "nitrogen"; //An atom of nitrogen is created
+    } else if (aSymbol.equals("Cl")){
+      name = "chlorine"; //An atom of chlorine is created
+    } else if (aSymbol.equals("F")){
+      name = "fluorine"; //An atom of fluorine is created
+    } else if (aSymbol.equals("S")){
+      name = "sulfur";//An atom of sulfur is created
+    } else if (aSymbol.equals("Na")){
+      name = "sodium"; //An atom of sodium is created
+    } else if (aSymbol.equals("K")){
+      name = "potassium"; //An atom of potassium is created
+    } else if (aSymbol.equals("P")){
+      name = "phosphorus"; //An atom of phosphorus is created
+    } else if (aSymbol.equals("Fe")){
+      name = "iron"; //An atom of iron is created
+    }
+  }
+
+  
+  public String toString(){
+    String res = "This is an atom of "+ name +" .";
+    return res;
+  }
+ 
+}
