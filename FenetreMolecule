@@ -5,6 +5,18 @@ public FenetreMolecule (){
     this.setLocation(300,200);
     this.setDefaultCloseOperation(
     
+    //title of the window
     JLabel build = new JLabel();
+    Font police = new Font("Arial",Font.BOLD,20);
+    build.setFont(police);
     build.setText("Build A Molecule!");
+    build.setBounds(10,10,700,100);
+    build.setForeground(Color.magenta);
     add(build);
+    
+    JLabel atoms = new JLabel();
+    
+    
+    
+    
+
