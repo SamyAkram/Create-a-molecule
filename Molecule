@@ -29,6 +29,7 @@ public class Molecule {
 	}
 
 	public String toString(){
-		
+		String res = "This is a "+ name +" molecule.";
+		return res;
 	}
 }
