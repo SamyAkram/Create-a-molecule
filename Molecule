@@ -3,7 +3,6 @@ import java.util.LinkedList;
 public class Molecule {
 	
 	private LinkedList<Atom> listAtomsComputer;
-	private LinkedList<Atom> listAtomsUser;
 	private String name;
 	
 	public Molecule (String aName){ //To be completed with more complex molecules !
@@ -20,11 +19,8 @@ public class Molecule {
 		}
 	}
 	
-	public void userCreation(){
-		
-	}
-	
-	public boolean check(){
+
+	public boolean check(LinkedList<Atom> listAtomsUser){
 		
 	}
 
