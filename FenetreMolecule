@@ -5,11 +5,37 @@ import java.awt.Font;
 
 
 public class FenetreMolecule extends JFrame implements ActionListener {
+    private JLabel build;
+    private JComboBox molecule;
+    private JLabel atoms;
+    private JButton C;
+    private JButton O;
+    private JButton H;
+    private JButton N;
+    private JButton hint;
+    private JButton submit;
+    private JButton trash;
+    private JButton refresh;
+    private JButton startOver;
+    private JLabel points;
+
 public FenetreMolecule (){
     this.setTitle("the molecule you are building:");
-    this.setSize(800,800);
-    this.setLocation(300,200);
-    this.setDefaultCloseOperation(
+    this.setSize(800,800);               
+    this.setLocation(300,200);             //set frame on middle of the screen
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    //closes window when cross button is clicked    
+    
+    //general pannel
+    JPanel panel=new JPanel();
+    panel.setBounds(0,0,800,800);
+    panel.setLayout(null);
+    panel.setBackground(Color.blue);
+    
+    //pannel where all the choice buttons are
+    JPanel choicePanel=new JPanel();
+    choicePanel.setBounds(500,20,780,780);
+    choicePanel.setLayout(null);
+    choicePanel.setBackground();
     
     //title of the window
     JLabel build = new JLabel();
