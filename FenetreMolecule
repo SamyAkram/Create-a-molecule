@@ -73,12 +73,30 @@ public class FenetreMolecule extends JFrame implements ActionListener {
 
         nitrogen = new JButton("N");
         nitrogen.setBounds(786,371,57,57);
-
+      
         //adding the atoms buttons in their dedicated container
         atomContainer.add(carbon);
         atomContainer.add(oxygen);
         atomContainer.add(hydrogen);
         atomContainer.add(nitrogen);
+        
+        //hint features
+        hint = newJButton("Trash");
+        hint.setBounds(.....);
+        
+        JLabel Hint = new JLabel("Need Help?);
+        Hint.setBounds(...);
+        
+        //panel that gathers the hint features
+        JPanel hintContainer = new JPanel();
+        hintContainer.setLayout(null);
+        hintContainer.setBounds(400,400,400,143);
+        panel.add(hintContainer); 
+        
+        hintContainer.add(hint);
+        hintContainer.add(Hint);
+      
+      
         
         carbon.addActionListener(this);
         oxygen.addActionListener(this);
@@ -91,7 +109,7 @@ public class FenetreMolecule extends JFrame implements ActionListener {
    public void actionPerformed(ActionEvent e){
      
 
-    
+
     
     
 
