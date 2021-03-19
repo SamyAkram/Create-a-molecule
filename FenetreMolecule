@@ -47,7 +47,7 @@ public class FenetreMolecule extends JFrame implements ActionListener {
         panel.add(atomContainer); 
         
         //"menu déroulant" for the user to choose the molecule they want to build
-        String[] moleculesList = { "dioxygen", "carbon dioxyde" ,  "water", "glucose", "red wine", "guanine", "cytosine", "thymine", "adenine" }
+        String[] moleculesList = { "dioxygen", "carbon dioxyde" ,  "water", "glucose", "red wine", "guanine", "cytosine", "thymine", "adenine" };
         //Indices start at 0, so indice 3 specifies glucose for ex)
         molecule = new JComboBox(moleculesList);
         atomContainer.add(molecule);
