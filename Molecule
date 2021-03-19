@@ -86,8 +86,8 @@ public class Molecule {
 	}
 	
 
-	public boolean check(LinkedList<Atom> listAtomsUser){ //To finish !
-		return listAtomsComputer.containsAll(listAtomsUser);
+	public boolean check(LinkedList<Atom> listAtomsUser){
+		return listAtomsUser.containsAll(listAtomsComputer);
 	}
 
 	public String toString(){
