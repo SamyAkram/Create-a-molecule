@@ -54,7 +54,7 @@ public class FenetreMolecule extends JFrame implements ActionListener {
         molecule.addActionListener(this);
         
         //message for the combo box
-        JLabel messageChoose = newJaleb("Choose your molecule!");
+        JLabel messageChoose = newJLabel("Choose your molecule!");
         messageChoose.setFont(police);
         messageChoose.setBounds(.........);
         
