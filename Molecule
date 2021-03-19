@@ -1,32 +1,93 @@
-import java.util.LinkedList;
+import java.util.*;
 
 public class Molecule {
 	
 	private LinkedList<Atom> listAtomsComputer;
 	private String name;
 	
-	public Molecule (String aName){ //To be completed with more complex molecules !
-		if (aName.equals("water")) { //Only accepts lowercase letters
-			listAtomsComputer.add(new Atom("H"));
-			listAtomsComputer.add(new Atom("H"));
+	public Molecule (String aName){ //Only accepts lowercase letters
+		if (aName.equals("dioxygen")) { //Creating the dioxygen molecule
+			for (int i=0; i<2; i++) {
+				listAtomsComputer.add(new Atom("O"));
+			}
+			name = aName;
+		} else if (aName.equals("carbon dioxyde")) { //Creating the carbon dioxyde molecule
+			listAtomsComputer.add(new Atom("C"));
+			for (int i=0; i<2; i++) {
+				listAtomsComputer.add(new Atom("O"));
+			}
+			name = aName;
+		} else if (aName.equals("water")) { //Creating the water molecule
+			for (int i=0; i<2; i++) {
+				listAtomsComputer.add(new Atom("H"));
+			}
 			listAtomsComputer.add(new Atom("O"));
 			name = aName;
-		} else if (aName.equals("carbon dioxyde")) { 
-			listAtomsComputer.add(new Atom("C"));
+		} else if (aName.equals("glucose")) { //Creating the glucose molecule
+			for (int i=0; i<12; i++) {
+				if (i<6) {
+					listAtomsComputer.add(new Atom("C"));
+					listAtomsComputer.add(new Atom("O"));
+				}
+				listAtomsComputer.add(new Atom("H"));
+			}
+			name = aName;
+		} else if (aName.equals("red wine")){ //Creating the red wine molecule
+			for (int i =0; i<14; i++) {
+				if (i<3) {
+					listAtomsComputer.add(new Atom("O"));
+				}
+				if (i<12) {
+					listAtomsComputer.add(new Atom("H"));
+				}
+				listAtomsComputer.add(new Atom("C"));
+			}
+			name = aName;
+		} else if (aName.equals("guanine")) { //Creating the guanine molecule
+			for (int i=0; i<5; i++) {
+				listAtomsComputer.add(new Atom("C"));
+				listAtomsComputer.add(new Atom("H"));
+				listAtomsComputer.add(new Atom("N"));
+			}
 			listAtomsComputer.add(new Atom("O"));
+			name = aName;
+		} else if (aName.equals("cytosine")) { //Creating the cytosine molecule
+			for (int i=0; i<5; i++) {
+				if (i<3) {
+					listAtomsComputer.add(new Atom("N"));
+				}
+				if (i<4) {
+					listAtomsComputer.add(new Atom("C"));
+				}
+				listAtomsComputer.add(new Atom("H"));
+			}
 			listAtomsComputer.add(new Atom("O"));
+			name = aName;
+		} else if (aName.equals("thymine")) { //Creating the thymine molecule
+			for (int i=0; i<6; i++) {
+				if (i<2) {
+					listAtomsComputer.add(new Atom("N"));
+					listAtomsComputer.add(new Atom("O"));
+				}
+				if (i<5) {
+					listAtomsComputer.add(new Atom("C"));
+				}
+				listAtomsComputer.add(new Atom("H"));
+			}
+			name = aName;
+		} else if (aName.equals("adenine")) { //Creating the adenine molecule
+			for (int i=0; i<5; i++) {
+					listAtomsComputer.add(new Atom("C"));
+					listAtomsComputer.add(new Atom("H"));
+					listAtomsComputer.add(new Atom("N"));
+				}
 			name = aName;
 		}
 	}
 	
 
 	public boolean check(LinkedList<Atom> listAtomsUser){ //To finish !
-		for (Atom a1 : listAtomsComputer)
-		if (listAtomsUser.contains(a1)) {
-			return true;
-		} else {
-			return false;
-		}
+		return listAtomsComputer.containsAll(listAtomsUser);
 	}
 
 	public String toString(){
