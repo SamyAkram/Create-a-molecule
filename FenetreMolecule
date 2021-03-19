@@ -81,10 +81,10 @@ public class FenetreMolecule extends JFrame implements ActionListener {
         atomContainer.add(nitrogen);
         
         //hint features
-        hint = newJButton("Trash");
+        hint = newJButton("Hint");
         hint.setBounds(.....);
         
-        JLabel Hint = new JLabel("Need Help?);
+        JLabel Hint = new JLabel("Need Help?");
         Hint.setBounds(...);
         
         //panel that gathers the hint features
