@@ -1,7 +1,6 @@
-import javax.swing.JFrame; 
-import javax.swing.JLabel;
-import java.awt.Color;
-import java.awt.Font;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 
 public class FenetreMolecule extends JFrame implements ActionListener {
@@ -15,113 +14,160 @@ public class FenetreMolecule extends JFrame implements ActionListener {
     private JButton hint;
     private JButton submit;
     private JButton trash;
-    private JButton refresh;
-    private JButton startOver;
     private JLabel points;
 
     public FenetreMolecule (){
+		
         //window definition
         this.setSize(800,800);
-        this.setLocation(300,200);             //set frame on middle of the screen
+        this.setLocation(300,200);             //sets frame on middle of the screen
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    //closes window when cross button is clicked    
     
         //general panel
         JPanel panel=new JPanel();
         panel.setBounds(0,0,800,800);
         panel.setLayout(null);
-        panel.setBackground(Color.blue);
+        panel.setBackground(new Color(120,165,200));
 
-        //title of the window
+        //title of the game
         build = new JLabel();
-        Font police = new Font("Arial",Font.BOLD,20);
+        Font police = new Font("Broadway",Font.BOLD,80);
         build.setFont(police);
         build.setText("Build A Molecule!");
-        build.setBounds(10,10,700,114);
-        build.setForeground(Color.magenta);
+        build.setBounds(100,25,1200,150);
+        build.setForeground(new Color (175,215,250));
+        
         panel.add(build);
              
-        //panel that gathers the atoms feature
-        JPanel atomContainer = new JPanel();
-        atomContainer.setLayout(null);
-        atomContainer.setBounds(400,286,400,143);
-        panel.add(atomContainer); 
+        //panel to display molecule being built
+        JPanel bigPanel= new JPanel();
+        bigPanel.setBounds(50,200,1100,700);
+        bigPanel.setLayout(null);
+        
+        panel.add(bigPanel);
+        
+        //panel that gathers the combo box features 
+        JPanel combo = new JPanel();
+        combo.setLayout(null);
+        combo.setBounds(1200,200,700,150);
+        combo.setBackground(new Color(175,215,250));
+        
+        panel.add(combo);
+        
+        //message for the combo box (telling the user to choose a molecule to build)
+        JLabel messageChoose = new JLabel("Choose your molecule!");
+        Font police2 = new Font("Serif",Font.BOLD,40);
+        messageChoose.setFont(police2);
+        messageChoose.setForeground(Color.white);
+        messageChoose.setBounds(50,10,600,50);
+
+        combo.add(messageChoose);
         
         //"menu déroulant" for the user to choose the molecule they want to build
         String[] moleculesList = { "dioxygen", "carbon dioxyde" ,  "water", "glucose", "red wine", "guanine", "cytosine", "thymine", "adenine" };
-        //Indices start at 0, so indice 3 specifies glucose for ex)
+        //Indices start at 0, so indice 3 specifies glucose for ex
+        ///moleculesList.setFont(police2);
         molecule = new JComboBox(moleculesList);
-        atomContainer.add(molecule);
-        molecule.addActionListener(this);
+        molecule.setBounds(75,75,550,40);
         
-        //message for the combo box
-        JLabel messageChoose = newJLabel("Choose your molecule!");
-        messageChoose.setFont(police);
-        messageChoose.setBounds(.........);
+        combo.add(molecule);
+        molecule.addActionListener(this); //to verify when user has chosen a molecule to build
         
-        //container for the combo box features 
-        JPanel combo = new JPanel();
-        combo.setLayout(null);
-        combo.setBounds(.........);
-        panel.add(combo);
-        combo.add(messageChoose);
+        //panel that gathers the atom feature
+        JPanel atomContainer = new JPanel();
+        atomContainer.setLayout(null);
+        atomContainer.setBounds(1200,400,700,200);
+        atomContainer.setBackground(new Color(175,215,250));
+        
+        panel.add(atomContainer); 
 
+		//message for the atom buttons (telling the user which atoms they dispose of)
         atoms = new JLabel();
-        Font police2 = new Font("Serif",Font.BOLD,15);
         atoms.setFont(police2); 
-        atoms.setText("Atoms");
-        atoms.setBounds(430,314,230,114);
-        atoms.setForeground(Color.red);
+        atoms.setText("Here are the atoms you can use!");
+        atoms.setBounds(50,20,600,50);
+        atoms.setForeground(Color.white);
+        
         atomContainer.add(atoms);
 
         //definition of the atom buttons 
         carbon = new JButton("C");
-        carbon.setBounds(429,371,57,57);
+        carbon.setBounds(90,90,77,77);
+        carbon.setFont(police2);
 
         oxygen = new JButton("O");
-        oxygen.setBounds(548,371,57,57);
+        oxygen.setBounds(240,90,77,77);
+        oxygen.setFont(police2);
 
         hydrogen = new JButton("H");
-        hydrogen.setBounds(667,371,57,57);
+        hydrogen.setBounds(390,90,77,77);
+        hydrogen.setFont(police2);
 
         nitrogen = new JButton("N");
-        nitrogen.setBounds(786,371,57,57);
-      
+        nitrogen.setBounds(540,90,77,77);
+        nitrogen.setFont(police2);
+
         //adding the atoms buttons in their dedicated container
         atomContainer.add(carbon);
         atomContainer.add(oxygen);
         atomContainer.add(hydrogen);
         atomContainer.add(nitrogen);
         
-        //hint features
-        hint = newJButton("Hint");
-        hint.setBounds(.....);
-        
-        JLabel Hint = new JLabel("Need Help?");
-        Hint.setBounds(...);
-        
-        //panel that gathers the hint features
-        JPanel hintContainer = new JPanel();
-        hintContainer.setLayout(null);
-        hintContainer.setBounds(400,400,400,143);
-        panel.add(hintContainer); 
-        
-        hintContainer.add(hint);
-        hintContainer.add(Hint);
-      
-      
-        
+        //to verify when user clicks on a button
         carbon.addActionListener(this);
         oxygen.addActionListener(this);
         hydrogen.addActionListener(this);
         nitrogen.addActionListener(this);
         
+        //panel that gathers the hint features
+        JPanel hintContainer = new JPanel();
+        hintContainer.setLayout(null);
+        hintContainer.setBounds(1200,650,300,250);
+        hintContainer.setBackground(new Color(175,215,250));
+        
+        panel.add(hintContainer);
+        
+        //hint features (message + button)
+        JLabel Hint = new JLabel("Need Help?");
+        Hint.setFont(police2); 
+        Hint.setForeground(Color.white);
+        Hint.setBounds(50,25,200,50);
+        
+        hint = new JButton("Hint");
+        hint.setFont(police2); 
+        hint.setBounds(50,100,200,90);
+                        
+        hintContainer.add(hint);
+        hintContainer.add(Hint);
+        
+        //panel that gathers the submit features (trash button + submit button)
+        JPanel submitContainer = new JPanel();
+        submitContainer.setLayout(null);
+        submitContainer.setBounds(1525,650,375,250);
+        submitContainer.setBackground(new Color(175,215,250));
+        
+        panel.add(submitContainer);
+        
+        //trash button
+        trash = new JButton(new ImageIcon("trash.jpg"));
+        trash.setBounds(215,65,120,120);
+        
+        submitContainer.add(trash);
+        
+        //submit button
+        submit = new JButton("Submit");
+        submit.setFont(police2);
+        submit.setBounds(40,75,150,100);
+        
+        submitContainer.add(submit);
+                
         this.add(panel);
         this.setVisible(true);
    }
    public void actionPerformed(ActionEvent e){
-     
-
-
-    
-    
+	   if (e.getSource()==carbon){
+		   System.out.println("hey");
+	   }
+   }
+  }
 
