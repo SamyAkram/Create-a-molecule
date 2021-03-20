@@ -1,0 +1,7 @@
+public class finalWindow {
+	
+	public static void main (String[] args) {
+		FenetreMolecule F= new FenetreMolecule();
+		F.setVisible(true);
+	}
+}
