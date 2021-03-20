@@ -21,8 +21,13 @@ public class FenetreMolecule extends JFrame implements ActionListener {
         //window definition
         this.setSize(800,800);
         this.setLocation(300,200);             //sets frame on middle of the screen
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    //closes window when cross button is clicked    
-    
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    //closes window when cross button is clicked   
+        
+        //fonts
+        Font police = new Font("Broadway",Font.BOLD,80);
+        Font police2 = new Font("Serif",Font.BOLD,40); 
+        Font police3 = new Font("Serif",Font.BOLD,30); 
+		Font police4 = new Font("Arial",Font.BOLD,20); 
         //general panel
         JPanel panel=new JPanel();
         panel.setBounds(0,0,800,800);
@@ -31,7 +36,6 @@ public class FenetreMolecule extends JFrame implements ActionListener {
 
         //title of the game
         build = new JLabel();
-        Font police = new Font("Broadway",Font.BOLD,80);
         build.setFont(police);
         build.setText("Build A Molecule!");
         build.setBounds(100,25,1200,150);
@@ -56,7 +60,6 @@ public class FenetreMolecule extends JFrame implements ActionListener {
         
         //message for the combo box (telling the user to choose a molecule to build)
         JLabel messageChoose = new JLabel("Choose your molecule!");
-        Font police2 = new Font("Serif",Font.BOLD,40);
         messageChoose.setFont(police2);
         messageChoose.setForeground(Color.white);
         messageChoose.setBounds(50,10,600,50);
@@ -66,9 +69,9 @@ public class FenetreMolecule extends JFrame implements ActionListener {
         //"menu déroulant" for the user to choose the molecule they want to build
         String[] moleculesList = { "dioxygen", "carbon dioxyde" ,  "water", "glucose", "red wine", "guanine", "cytosine", "thymine", "adenine" };
         //Indices start at 0, so indice 3 specifies glucose for ex
-        ///moleculesList.setFont(police2);
         molecule = new JComboBox(moleculesList);
         molecule.setBounds(75,75,550,40);
+        molecule.setFont(police4);
         
         combo.add(molecule);
         molecule.addActionListener(this); //to verify when user has chosen a molecule to build
@@ -91,27 +94,37 @@ public class FenetreMolecule extends JFrame implements ActionListener {
         atomContainer.add(atoms);
 
         //definition of the atom buttons 
-        carbon = new JButton("C");
+        carbon = new JButton(new ImageIcon("c.png"));
         carbon.setBounds(90,90,77,77);
-        carbon.setFont(police2);
-
-        oxygen = new JButton("O");
+       
+        oxygen = new JButton(new ImageIcon("o.png") );
         oxygen.setBounds(240,90,77,77);
-        oxygen.setFont(police2);
-
-        hydrogen = new JButton("H");
+       
+        hydrogen = new JButton(new ImageIcon("h.png"));
         hydrogen.setBounds(390,90,77,77);
-        hydrogen.setFont(police2);
-
-        nitrogen = new JButton("N");
+        
+        nitrogen = new JButton(new ImageIcon("n.png"));
         nitrogen.setBounds(540,90,77,77);
-        nitrogen.setFont(police2);
-
+        
         //adding the atoms buttons in their dedicated container
         atomContainer.add(carbon);
         atomContainer.add(oxygen);
         atomContainer.add(hydrogen);
         atomContainer.add(nitrogen);
+        
+        //to make the atoms buttons invisible but still efficient and only keep the picture in it
+        carbon.setOpaque(false);
+		carbon.setContentAreaFilled(false);
+		carbon.setBorderPainted(false);
+		oxygen.setOpaque(false);
+		oxygen.setContentAreaFilled(false);
+		oxygen.setBorderPainted(false);
+		hydrogen.setOpaque(false);
+		hydrogen.setContentAreaFilled(false);
+		hydrogen.setBorderPainted(false);
+		nitrogen.setOpaque(false);
+		nitrogen.setContentAreaFilled(false);
+		nitrogen.setBorderPainted(false);
         
         //to verify when user clicks on a button
         carbon.addActionListener(this);
@@ -134,11 +147,14 @@ public class FenetreMolecule extends JFrame implements ActionListener {
         Hint.setBounds(50,25,200,50);
         
         hint = new JButton("Hint");
-        hint.setFont(police2); 
+        hint.setFont(police3); 
         hint.setBounds(50,100,200,90);
-                        
+        hint.setBackground(new Color(120,165,200));
+        hint.setForeground(Color.white);
+                                
         hintContainer.add(hint);
         hintContainer.add(Hint);
+        hint.addActionListener(this);
         
         //panel that gathers the submit features (trash button + submit button)
         JPanel submitContainer = new JPanel();
@@ -149,25 +165,107 @@ public class FenetreMolecule extends JFrame implements ActionListener {
         panel.add(submitContainer);
         
         //trash button
-        trash = new JButton(new ImageIcon("trash.jpg"));
+        trash = new JButton(new ImageIcon("trashcan.png"));
         trash.setBounds(215,65,120,120);
+                
+        trash.setOpaque(false);
+		trash.setContentAreaFilled(false);
+		trash.setBorderPainted(false);
         
         submitContainer.add(trash);
+        trash.addActionListener(this);
         
         //submit button
         submit = new JButton("Submit");
-        submit.setFont(police2);
+        submit.setFont(police3);
         submit.setBounds(40,75,150,100);
-        
+        submit.setBackground(new Color(120,165,200));
+        submit.setForeground(Color.white);
+                        
         submitContainer.add(submit);
+        submit.addActionListener(this);
+        
+        //points display
+        ///write method to add a point each time the molecule built corresponds to molecule chosen
+        points=new JLabel("Points: 0");
+        points.setFont(police3);
+        points.setBounds(10,650,200,50);
+        points.setForeground(Color.red);
+        
+        bigPanel.add(points);        
                 
         this.add(panel);
         this.setVisible(true);
    }
    public void actionPerformed(ActionEvent e){
-	   if (e.getSource()==carbon){
-		   System.out.println("hey");
+	   //code to determine the molecule chosen by the user
+	   String moleculeName="";
+	   JComboBox cb = (JComboBox)e.getSource();
+	   if (cb==molecule){
+			moleculeName = (String)cb.getSelectedItem();
+		}
+		//code to display a hint message or picture depending on the molecule chosen
+	   if (e.getSource()==hint){
+		   hintMessage(moleculeName);		   	    
 	   }
+	   //code to compare the molecule submitted with the one in the molecule bank
+	   ///if (e.getSource()==submit){
+	   ///molecule built compareTo molecule chosen
+	   
+	   //code to delete all atoms displayed on panel when trash button is clicked
+	   ///if(e.getSource()==trash){
+	   ///clear panel
+	   
+	   //code to display atom clicked by user
+	   ///if(e.getSource()==oxygen || e.getSource()==hydrogen || e.getSource()==carbon || e.getSource()==nitrogen){
+	   ///repaint();
+		   
    }
+   //method to determine which message or picture to display depending on the molecule chosen by the user
+   ///find way to delete the hint message after 10 sec
+   public void hintMessage(String mol){
+	   if (mol=="dioxygen"||mol=="carbon dioxyde"){
+		   JLabel dioxHint= new JLabel("Come on just think, the answer is in the name!");
+		   dioxHint.setBounds(300,350,200,100);
+		   dioxHint.setBackground(new Color(255,225,105));
+		   this.add(dioxHint);
+		}
+		if (mol=="water"){
+		   JLabel waterHint= new JLabel("Two snowballs and a clown nose");
+		   waterHint.setBounds(300,350,200,100);
+		   waterHint.setBackground(new Color(255,225,105));
+		   this.add(waterHint);
+	   }
+	   if (mol=="red wine"){
+		   JLabel wineHint= new JLabel(new ImageIcon ("wine.png"));
+		   ///wineHint.setBounds (
+		   this.add(wineHint);
+	   }
+	   if (mol=="guanine"){
+		   JLabel guanHint= new JLabel(new ImageIcon ("guanine.png"));
+		   ///wineHint.setBounds (
+		   this.add(guanHint);
+	   }
+	   if (mol=="cytosine"){
+		   JLabel cytoHint= new JLabel(new ImageIcon ("cytosine.png"));
+		   ///cytoHint.setBounds (
+		   this.add(cytoHint);
+	   }
+	   if (mol=="thymine"){
+		   JLabel thymHint= new JLabel(new ImageIcon ("thymine.png"));
+		   ///thymHint.setBounds (
+		   this.add(thymHint);
+	   }
+	   if (mol=="adenine"){
+		   JLabel adeHint= new JLabel(new ImageIcon ("adenine.png"));
+		   ///adeHint.setBounds (
+		   this.add(adeHint);
+	   }
+			
+	}
+	//paint method to display atoms chosen by user to build the molecule
+	///public void paint(Graphics g){
+		///clear all atoms on panel
+		///add atom chosen in atom container
+   
   }
-
