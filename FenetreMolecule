@@ -198,15 +198,11 @@ public class FenetreMolecule extends JFrame implements ActionListener {
         this.setVisible(true);
    }
    public void actionPerformed(ActionEvent e){
-	   //code to determine the molecule chosen by the user
-	   String moleculeName="";
-	   JComboBox cb = (JComboBox)e.getSource();
-	   if (cb==molecule){
-			moleculeName = (String)cb.getSelectedItem();
-		}
-		//code to display a hint message or picture depending on the molecule chosen
+	   
+	   //code to display a hint message or picture depending on the molecule chosen
+	   String s=(String) molecule.getSelectedItem();
 	   if (e.getSource()==hint){
-		   hintMessage(moleculeName);		   	    
+		   hintMessage(s);	    
 	   }
 	   //code to compare the molecule submitted with the one in the molecule bank
 	   ///if (e.getSource()==submit){
@@ -221,46 +217,73 @@ public class FenetreMolecule extends JFrame implements ActionListener {
 	   ///repaint();
 		   
    }
-   //method to determine which message or picture to display depending on the molecule chosen by the user
-   ///find way to delete the hint message after 10 sec
-   public void hintMessage(String mol){
-	   if (mol=="dioxygen"||mol=="carbon dioxyde"){
-		   JLabel dioxHint= new JLabel("Come on just think, the answer is in the name!");
-		   dioxHint.setBounds(300,350,200,100);
-		   dioxHint.setBackground(new Color(255,225,105));
-		   this.add(dioxHint);
-		}
-		if (mol=="water"){
-		   JLabel waterHint= new JLabel("Two snowballs and a clown nose");
-		   waterHint.setBounds(300,350,200,100);
-		   waterHint.setBackground(new Color(255,225,105));
-		   this.add(waterHint);
-	   }
-	   if (mol=="red wine"){
-		   JLabel wineHint= new JLabel(new ImageIcon ("wine.png"));
-		   ///wineHint.setBounds (
-		   this.add(wineHint);
-	   }
-	   if (mol=="guanine"){
-		   JLabel guanHint= new JLabel(new ImageIcon ("guanine.png"));
-		   ///wineHint.setBounds (
-		   this.add(guanHint);
-	   }
-	   if (mol=="cytosine"){
-		   JLabel cytoHint= new JLabel(new ImageIcon ("cytosine.png"));
-		   ///cytoHint.setBounds (
-		   this.add(cytoHint);
-	   }
-	   if (mol=="thymine"){
-		   JLabel thymHint= new JLabel(new ImageIcon ("thymine.png"));
-		   ///thymHint.setBounds (
-		   this.add(thymHint);
-	   }
-	   if (mol=="adenine"){
-		   JLabel adeHint= new JLabel(new ImageIcon ("adenine.png"));
-		   ///adeHint.setBounds (
-		   this.add(adeHint);
-	   }
+   //method to determine which message or picture to display for the hint depending on the molecule chosen by the user
+   public void hintMessage(String s){
+	   
+	   //creation of a new window to display the hint
+	   JFrame fr=new JFrame();
+	   fr.setBounds(550,300,650,400);
+	   fr.getContentPane().setBackground(new Color(255,225,105));
+	   fr.setVisible(true);	
+	   Font police5=new Font("Times new roman",Font.BOLD,30);
+	   
+	   switch (s) { //check for a match 
+			case "dioxygen":
+			   JLabel dioxHint= new JLabel("Come on just think, the answer is in the name!");
+			   dioxHint.setBounds(75,200,150,200);
+			   dioxHint.setFont(police5);
+			   fr.add(dioxHint);
+			   break;
+			case "carbon dioxyde":
+			   JLabel cdioxHint= new JLabel("Come on just think, the answer is in the name!");
+			   cdioxHint.setBounds(75,200,150,200);
+			   cdioxHint.setFont(police5);
+			   fr.add(cdioxHint);
+			   break;
+			
+			case "water":
+			   JLabel waterHint= new JLabel("Two snowballs and a clown nose");
+			   waterHint.setBounds(75,200,150,200);
+			   waterHint.setFont(police5);
+			   fr.add(waterHint);
+			   break;
+			
+			case "glucose":
+			   JLabel glucHint= new JLabel(new ImageIcon ("glucose.png"));
+			   glucHint.setBounds(25,100,600,350);
+			   fr.add(glucHint);
+			   break;
+		   
+			case "red wine":
+			   JLabel wineHint= new JLabel(new ImageIcon ("wine.png"));
+			   wineHint.setBounds(25,25,600,350);
+			   fr.add(wineHint);
+			   break;
+		
+		    case "guanine":
+			   JLabel guanHint= new JLabel(new ImageIcon ("guanine.png"));
+			   guanHint.setBounds(25,25,600,350);
+			   fr.add(guanHint);
+			   break;
+			   
+		    case "cytosine":
+			   JLabel cytoHint= new JLabel(new ImageIcon ("cytosine.png"));
+			   cytoHint.setBounds(25,25,600,350);
+			   fr.add(cytoHint);
+			   break;
+			   
+		    case "thymine":
+			   JLabel thymHint= new JLabel(new ImageIcon ("thymine.png"));
+			   thymHint.setBounds(25,25,600,350);
+			   fr.add(thymHint);
+			   break;
+			   
+		    case "adenine":
+			   JLabel adeHint= new JLabel(new ImageIcon ("adenine.png"));
+			   adeHint.setBounds(25,25,600,350);
+			   fr.add(adeHint);
+			   break;
+		}	
 			
 	}
 	//paint method to display atoms chosen by user to build the molecule
