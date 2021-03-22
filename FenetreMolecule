@@ -19,18 +19,19 @@ public class FenetreMolecule extends JFrame implements ActionListener {
     public FenetreMolecule (){
 		
         //window definition
-        this.setSize(800,800);
-        this.setLocation(300,200);             //sets frame on middle of the screen
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setBounds(0,0,screenSize.width,screenSize.height); //window appears at the size of the screen
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    //closes window when cross button is clicked   
         
-        //fonts
+        //different font styles used for the text parts
         Font police = new Font("Broadway",Font.BOLD,80);
         Font police2 = new Font("Serif",Font.BOLD,40); 
         Font police3 = new Font("Serif",Font.BOLD,30); 
 		Font police4 = new Font("Arial",Font.BOLD,20); 
+		
         //general panel
         JPanel panel=new JPanel();
-        panel.setBounds(0,0,800,800);
+        panel.setBounds(0,0,screenSize.width,screenSize.height);
         panel.setLayout(null);
         panel.setBackground(new Color(120,165,200));
 
@@ -43,7 +44,7 @@ public class FenetreMolecule extends JFrame implements ActionListener {
         
         panel.add(build);
              
-        //panel to display molecule being built
+        //panel to display the molecule being built
         JPanel bigPanel= new JPanel();
         bigPanel.setBounds(50,200,1100,700);
         bigPanel.setLayout(null);
@@ -53,7 +54,7 @@ public class FenetreMolecule extends JFrame implements ActionListener {
         //panel that gathers the combo box features 
         JPanel combo = new JPanel();
         combo.setLayout(null);
-        combo.setBounds(1200,200,700,150);
+        combo.setBounds(1200,200,675,150);
         combo.setBackground(new Color(175,215,250));
         
         panel.add(combo);
@@ -70,24 +71,23 @@ public class FenetreMolecule extends JFrame implements ActionListener {
         String[] moleculesList = { "dioxygen", "carbon dioxyde" ,  "water", "glucose", "red wine", "guanine", "cytosine", "thymine", "adenine" };
         //Indices start at 0, so indice 3 specifies glucose for ex
         molecule = new JComboBox(moleculesList);
-        molecule.setBounds(75,75,550,40);
+        molecule.setBounds(75,75,540,40);
         molecule.setFont(police4);
         
         combo.add(molecule);
         molecule.addActionListener(this); //to verify when user has chosen a molecule to build
         
-        //panel that gathers the atom feature
+        //panel that gathers the atom features
         JPanel atomContainer = new JPanel();
         atomContainer.setLayout(null);
-        atomContainer.setBounds(1200,400,700,200);
+        atomContainer.setBounds(1200,400,675,200);
         atomContainer.setBackground(new Color(175,215,250));
         
         panel.add(atomContainer); 
 
 		//message for the atom buttons (telling the user which atoms they dispose of)
-        atoms = new JLabel();
+        atoms = new JLabel("Here are the atoms you can use!");
         atoms.setFont(police2); 
-        atoms.setText("Here are the atoms you can use!");
         atoms.setBounds(50,20,600,50);
         atoms.setForeground(Color.white);
         
@@ -95,16 +95,16 @@ public class FenetreMolecule extends JFrame implements ActionListener {
 
         //definition of the atom buttons 
         carbon = new JButton(new ImageIcon("c.png"));
-        carbon.setBounds(90,90,77,77);
+        carbon.setBounds(85,90,77,77);
        
         oxygen = new JButton(new ImageIcon("o.png") );
-        oxygen.setBounds(240,90,77,77);
+        oxygen.setBounds(235,90,77,77);
        
         hydrogen = new JButton(new ImageIcon("h.png"));
-        hydrogen.setBounds(390,90,77,77);
+        hydrogen.setBounds(385,90,77,77);
         
         nitrogen = new JButton(new ImageIcon("n.png"));
-        nitrogen.setBounds(540,90,77,77);
+        nitrogen.setBounds(535,90,77,77);
         
         //adding the atoms buttons in their dedicated container
         atomContainer.add(carbon);
@@ -112,7 +112,7 @@ public class FenetreMolecule extends JFrame implements ActionListener {
         atomContainer.add(hydrogen);
         atomContainer.add(nitrogen);
         
-        //to make the atoms buttons invisible but still efficient and only keep the picture in it
+        //to make the atoms buttons invisible but still available and only keep the pictures on them
         carbon.setOpaque(false);
 		carbon.setContentAreaFilled(false);
 		carbon.setBorderPainted(false);
@@ -159,14 +159,14 @@ public class FenetreMolecule extends JFrame implements ActionListener {
         //panel that gathers the submit features (trash button + submit button)
         JPanel submitContainer = new JPanel();
         submitContainer.setLayout(null);
-        submitContainer.setBounds(1525,650,375,250);
+        submitContainer.setBounds(1525,650,350,250);
         submitContainer.setBackground(new Color(175,215,250));
         
         panel.add(submitContainer);
         
         //trash button
         trash = new JButton(new ImageIcon("trashcan.png"));
-        trash.setBounds(215,65,120,120);
+        trash.setBounds(210,65,120,120);
                 
         trash.setOpaque(false);
 		trash.setContentAreaFilled(false);
@@ -186,16 +186,17 @@ public class FenetreMolecule extends JFrame implements ActionListener {
         submit.addActionListener(this);
         
         //points display
-        ///write method to add a point each time the molecule built corresponds to molecule chosen
+        ///write method to add a point each time the molecule built and submitted corresponds to molecule chosen
+        ///write winOrLose method
         points=new JLabel("Points: 0");
-        points.setFont(police3);
+        points.setFont(police2);
         points.setBounds(10,650,200,50);
         points.setForeground(Color.red);
         
         bigPanel.add(points);        
                 
         this.add(panel);
-        this.setVisible(true);
+        this.setVisible(true); //make the window containing all the features of the game visible
    }
    public void actionPerformed(ActionEvent e){
 	   
@@ -204,17 +205,22 @@ public class FenetreMolecule extends JFrame implements ActionListener {
 	   if (e.getSource()==hint){
 		   hintMessage(s);	    
 	   }
+	   
 	   //code to compare the molecule submitted with the one in the molecule bank
-	   ///if (e.getSource()==submit){
+	   if (e.getSource()==submit){
 	   ///molecule built compareTo molecule chosen
-	   
+		}
+		
 	   //code to delete all atoms displayed on panel when trash button is clicked
-	   ///if(e.getSource()==trash){
+	   if(e.getSource()==trash){
 	   ///clear panel
-	   
+		}
+			   
 	   //code to display atom clicked by user
-	   ///if(e.getSource()==oxygen || e.getSource()==hydrogen || e.getSource()==carbon || e.getSource()==nitrogen){
+	   if(e.getSource()==oxygen || e.getSource()==hydrogen || e.getSource()==carbon || e.getSource()==nitrogen){
 	   ///repaint();
+	   
+		}
 		   
    }
    //method to determine which message or picture to display for the hint depending on the molecule chosen by the user
@@ -229,7 +235,7 @@ public class FenetreMolecule extends JFrame implements ActionListener {
 	   
 	   switch (s) { //check for a match 
 			case "dioxygen":
-			   JLabel dioxHint= new JLabel("Come on just think, the answer is in the name!");
+			   JLabel dioxHint= new JLabel("Come on just think, the answer is in the name!"); //if the molecule chosen was dioxygen and the user clicks on hint, this message will be displayed
 			   dioxHint.setBounds(75,200,150,200);
 			   dioxHint.setFont(police5);
 			   fr.add(dioxHint);
@@ -242,7 +248,7 @@ public class FenetreMolecule extends JFrame implements ActionListener {
 			   break;
 			
 			case "water":
-			   JLabel waterHint= new JLabel("Two snowballs and a clown nose");
+			   JLabel waterHint= new JLabel("Two snowballs and a clown nose...");
 			   waterHint.setBounds(75,200,150,200);
 			   waterHint.setFont(police5);
 			   fr.add(waterHint);
@@ -250,7 +256,7 @@ public class FenetreMolecule extends JFrame implements ActionListener {
 			
 			case "glucose":
 			   JLabel glucHint= new JLabel(new ImageIcon ("glucose.png"));
-			   glucHint.setBounds(25,100,600,350);
+			   glucHint.setBounds(25,25,600,350);
 			   fr.add(glucHint);
 			   break;
 		   
