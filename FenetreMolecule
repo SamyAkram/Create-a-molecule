@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 
-public class FenetreMolecule2 extends JFrame implements ActionListener {
+public class FenetreMolecule extends JFrame implements ActionListener {
 	private JPanel panel;
 	private JPanel bigPanel;
 	///private JPanel littlePanel;
@@ -31,7 +31,7 @@ public class FenetreMolecule2 extends JFrame implements ActionListener {
     private JLabel nCount;
     ///private JLabel addMsg;
 
-    public FenetreMolecule2 (){
+    public FenetreMolecule (){
 		
         //window definition
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
